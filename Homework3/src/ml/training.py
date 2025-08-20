@@ -6,7 +6,12 @@ from huggingface_hub import login
 from accelerate import Accelerator
 from accelerate.utils import DeepSpeedPlugin
 
-HF_TOKEN = "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"
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+
+HF_TOKEN = os.environ['HF_TOKEN']
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # TODO: Initialize the wandb library by using the login function

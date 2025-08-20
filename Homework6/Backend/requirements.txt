@@ -9,7 +9,10 @@ sse_starlette
 langserve
 transformers
 huggingface_hub
-
-
-
-
+protobuf
+langchain_community
+langchain_openai
+pinecone[grpc]
+GitPython
+chromadb
+sqladmin

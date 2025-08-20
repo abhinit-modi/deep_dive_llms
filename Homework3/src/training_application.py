@@ -1,8 +1,11 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-HF_TOKEN="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"
-WANDB_TOKEN="6fd417d07766e2b7b831292ddc4b708d22cfb7d7"
+import os
+
+
+HF_TOKEN=os.environ['HF_TOKEN']
+WANDB_TOKEN=os.environ['WANDB_TOKEN']
 import os
 
 os.environ['HF_TOKEN'] = HF_TOKEN

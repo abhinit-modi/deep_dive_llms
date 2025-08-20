@@ -2,8 +2,11 @@ from huggingface_hub import login
 from evaluation.evaluate import Evaluator
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # TODO: replace by yours
-HUGGINGFACE_TOKEN = "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"
+HUGGINGFACE_TOKEN = "<token>"
 REPO_NAME = 'training_experiments'
 EVAL_SPLIT = 0.2
 
@@ -33,7 +36,11 @@ class BaseTrainer:
         return dataset['train'], dataset['test']
 
     def save(self, trainer):
-        login(token=HUGGINGFACE_TOKEN)
+        token = os.environ.get('HF_TOKEN')
+        if token:
+            login(token=token)
+        else:
+            login(token=HUGGINGFACE_TOKEN)
         trainer.push_to_hub()
 
     def evaluate(self):

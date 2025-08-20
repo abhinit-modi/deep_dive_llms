@@ -14,6 +14,6 @@ COPY --chown=user ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 # Copy the rest of the application code from the host to the container
 # Again, ensure the copied files are owned by 'user'
-COPY --chown=user ./app /app
+COPY --chown=user . /app
 # Specify the command to run when the container starts
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
