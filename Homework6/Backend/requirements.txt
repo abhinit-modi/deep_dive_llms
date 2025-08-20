@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+pydantic
+langchain_huggingface
+langchain
+langchain_core
+python-dotenv
+sse_starlette
+langserve
+transformers
+huggingface_hub
+
+
+
+
