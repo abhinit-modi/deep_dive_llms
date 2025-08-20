@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # TODO: replace by yours
-HUGGINGFACE_TOKEN = "<token>"
+HUGGINGFACE_TOKEN = os.environ.get('HF_TOKEN')
 REPO_NAME = 'training_experiments'
 EVAL_SPLIT = 0.2
 
@@ -22,11 +22,7 @@ class BaseTrainer:
         self.eval_split = eval_split
         # TODO: make sure to export you Hugging Face Token:
         # export HF_TOKEN=[YOUR TOKEN]
-        token = os.environ.get('HF_TOKEN')
-        if token:
-            login(token=token)
-        else:
-            login(token=HUGGINGFACE_TOKEN)
+        login(token=HUGGINGFACE_TOKEN)
 
     def split_dataset(self, dataset):
         """
@@ -36,11 +32,7 @@ class BaseTrainer:
         return dataset['train'], dataset['test']
 
     def save(self, trainer):
-        token = os.environ.get('HF_TOKEN')
-        if token:
-            login(token=token)
-        else:
-            login(token=HUGGINGFACE_TOKEN)
+        login(token=HUGGINGFACE_TOKEN)
         trainer.push_to_hub()
 
     def evaluate(self):
